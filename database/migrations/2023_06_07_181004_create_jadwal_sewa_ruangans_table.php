@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jadwal_sewa_ruangan', function (Blueprint $table) {
+        Schema::create('jadwal_sewa_ruangans', function (Blueprint $table) {
             $table->id('id_jadwal_sewa_ruangan');
             $table->date('tanggal_pesanan');
             $table->time('waktu_mulai');
@@ -19,7 +19,9 @@ return new class extends Migration
 
             // Foreign keys
             $table->unsignedBigInteger('Ruangan_id_ruangan');
-            $table->foreign('Ruangan_id_ruangan')->references('id_ruangan')->on('ruangan');
+            $table->foreign('Ruangan_id_ruangan')->references('id_ruangan')->on('ruangans');
+
+            $table->timestamps();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal_sewa_ruangan');
+        Schema::dropIfExists('jadwal_sewa_ruangans');
     }
 };

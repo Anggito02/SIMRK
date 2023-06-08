@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pesanan_kendaraan', function (Blueprint $table) {
+        Schema::create('pesanan_kendaraans', function (Blueprint $table) {
             $table->id('id_pesanan_kendaraan');
             $table->string('status_pesanan')->default('Menunggu Dokumen');
             $table->boolean('status_dokumen')->default(false);
@@ -21,8 +21,10 @@ return new class extends Migration
             // Foreign keys
             $table->unsignedBigInteger('Akun_id_akun');
             $table->unsignedBigInteger('Kendaraan_id_kendaraan');
-            $table->foreign('Akun_id_akun')->references('id_akun')->on('akun');
-            $table->foreign('Kendaraan_id_kendaraan')->references('id_kendaraan')->on('kendaraan');
+            $table->foreign('Akun_id_akun')->references('id_akun')->on('akuns');
+            $table->foreign('Kendaraan_id_kendaraan')->references('id_kendaraan')->on('kendaraans');
+
+            $table->timestamps();
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pesanan_kendaraan');
+        Schema::dropIfExists('pesanan_kendaraans');
     }
 };
