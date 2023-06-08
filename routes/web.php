@@ -19,19 +19,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('about', function () {
+Route::get('/about', function () {
     return view('about', [
         "page" => "About"
     ]);
 });
 
-Route::get('login', function () {
+Route::get('/login', function () {
     return view('login', [
         "page" => "Login"
     ]);
 });
 
-Route::get('register', function () {
+Route::get('/register', function () {
     return view('register', [
         "page" => "Register"
     ]); 
